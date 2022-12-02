@@ -88,7 +88,7 @@ public class CropImageView extends ImageView {
 
     boolean mDragLimit = true;// 是否限制锚点拖动范围为凸四边形
 
-    enum DragPointType{
+    enum DragPointType {
         LEFT_TOP,
         RIGHT_TOP,
         RIGHT_BOTTOM,
@@ -97,8 +97,8 @@ public class CropImageView extends ImageView {
         RIGHT,
         BOTTOM,
         LEFT;
-        
-        public static boolean isEdgePoint(DragPointType type){
+
+        public static boolean isEdgePoint(DragPointType type) {
             return type == TOP || type == RIGHT || type == BOTTOM || type == LEFT;
         }
     }
@@ -152,6 +152,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 设置选区
+     *
      * @param cropPoints 选区顶点
      */
     public void setCropPoints(Point[] cropPoints) {
@@ -167,17 +168,17 @@ public class CropImageView extends ImageView {
         }
     }
 
-    public void setEdgeMidPoints(){
-        if (mEdgeMidPoints == null){
+    public void setEdgeMidPoints() {
+        if (mEdgeMidPoints == null) {
             mEdgeMidPoints = new Point[4];
-            for (int i = 0; i < mEdgeMidPoints.length; i++){
+            for (int i = 0; i < mEdgeMidPoints.length; i++) {
                 mEdgeMidPoints[i] = new Point();
             }
         }
         int len = mCropPoints.length;
-        for (int i = 0; i < len; i++){
-            mEdgeMidPoints[i].set(mCropPoints[i].x + (mCropPoints[(i+1)%len].x - mCropPoints[i].x)/2,
-                                    mCropPoints[i].y + (mCropPoints[(i+1)%len].y - mCropPoints[i].y)/2);
+        for (int i = 0; i < len; i++) {
+            mEdgeMidPoints[i].set(mCropPoints[i].x + (mCropPoints[(i + 1) % len].x - mCropPoints[i].x) / 2,
+                    mCropPoints[i].y + (mCropPoints[(i + 1) % len].y - mCropPoints[i].y) / 2);
         }
     }
 
@@ -201,6 +202,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 设置待裁剪图片并显示
+     *
      * @param bmp 待裁剪图片
      */
     public void setImageToCrop(Bitmap bmp) {
@@ -210,6 +212,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 获取选区
+     *
      * @return 选区顶点
      */
     public Point[] getCropPoints() {
@@ -218,6 +221,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 设置锚点填充颜色
+     *
      * @param pointFillColor 颜色
      */
     public void setPointFillColor(int pointFillColor) {
@@ -226,6 +230,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 设置锚点填充颜色透明度
+     *
      * @param pointFillAlpha 透明度
      */
     public void setPointFillAlpha(int pointFillAlpha) {
@@ -234,6 +239,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 蒙版透明度
+     *
      * @param maskAlpha 透明度
      */
     public void setMaskAlpha(int maskAlpha) {
@@ -244,6 +250,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 是否显示辅助线
+     *
      * @param showGuideLine 是否
      */
     public void setShowGuideLine(boolean showGuideLine) {
@@ -252,7 +259,8 @@ public class CropImageView extends ImageView {
     }
 
     /**
-     *  设置辅助线颜色
+     * 设置辅助线颜色
+     *
      * @param guideLineColor 颜色
      */
     public void setGuideLineColor(int guideLineColor) {
@@ -261,6 +269,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 设置辅助线宽度
+     *
      * @param guideLineWidth 宽度 px
      */
     public void setGuideLineWidth(float guideLineWidth) {
@@ -269,6 +278,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 设置选区线的颜色
+     *
      * @param lineColor 颜色
      */
     public void setLineColor(int lineColor) {
@@ -278,6 +288,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 设置放大镜准心颜色
+     *
      * @param magnifierCrossColor 准心颜色
      */
     public void setMagnifierCrossColor(int magnifierCrossColor) {
@@ -286,6 +297,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 设置选区线宽度
+     *
      * @param lineWidth 线宽度，px
      */
     public void setLineWidth(int lineWidth) {
@@ -305,6 +317,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 设置是否显示放大镜
+     *
      * @param showMagnifier 是否
      */
     public void setShowMagnifier(boolean showMagnifier) {
@@ -314,6 +327,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 设置是否限制拖动为凸四边形
+     *
      * @param dragLimit 是否
      */
     public void setDragLimit(boolean dragLimit) {
@@ -322,6 +336,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 裁剪
+     *
      * @return 裁剪后的图片
      */
     public Bitmap crop() {
@@ -330,6 +345,7 @@ public class CropImageView extends ImageView {
 
     /**
      * 使用自定义选区裁剪
+     *
      * @param points 大小为4
      * @return 裁剪后的图片
      */
@@ -338,11 +354,13 @@ public class CropImageView extends ImageView {
             return null;
         }
         Bitmap bmp = getBitmap();
-        return bmp == null ? null : SmartCropper.crop(bmp, points);
+        //return bmp == null ? null : SmartCropper.crop(bmp, points);
+        return bmp == null ? null : SmartCropper.cropNewWay(bmp, points);
     }
 
     /**
      * 选区是否为凸四边形
+     *
      * @return true：凸四边形
      */
     public boolean canRightCrop() {
@@ -370,14 +388,14 @@ public class CropImageView extends ImageView {
         long y1 = lineP1.y;
         long x2 = lineP2.x;
         long y2 = lineP2.y;
-        return (x - x1)*(y2 - y1) - (y - y1)*(x2 - x1);
+        return (x - x1) * (y2 - y1) - (y - y1) * (x2 - x1);
     }
 
     public Bitmap getBitmap() {
         Bitmap bmp = null;
         Drawable drawable = getDrawable();
         if (drawable instanceof BitmapDrawable) {
-            bmp = ((BitmapDrawable)drawable).getBitmap();
+            bmp = ((BitmapDrawable) drawable).getBitmap();
         }
         return bmp;
     }
@@ -451,9 +469,9 @@ public class CropImageView extends ImageView {
 //        onDrawCusMagnifier(canvas);
     }
 
-    protected void onDrawCusMagnifier(Canvas canvas){
+    protected void onDrawCusMagnifier(Canvas canvas) {
         DragPointType pointType = getPointType(mDraggingPoint);
-        if (pointType == null || DragPointType.isEdgePoint(pointType)){
+        if (pointType == null || DragPointType.isEdgePoint(pointType)) {
             return;
         }
 
@@ -466,11 +484,11 @@ public class CropImageView extends ImageView {
             float radius = getWidth() / 8;
             float cx = radius; //圆心x坐标
             int lineOffset = (int) dp2px(MAGNIFIER_BORDER_WIDTH);
-            if (0 <= mDraggingPoint.x && mDraggingPoint.x < getDrawable().getIntrinsicWidth() / 2){ //拉伸点在左侧时，放大镜显示在右侧
-                mMagnifierDrawable.setBounds(getWidth() - (int)radius * 2 + lineOffset, lineOffset, getWidth() - lineOffset, (int)radius * 2 - lineOffset);
+            if (0 <= mDraggingPoint.x && mDraggingPoint.x < getDrawable().getIntrinsicWidth() / 2) { //拉伸点在左侧时，放大镜显示在右侧
+                mMagnifierDrawable.setBounds(getWidth() - (int) radius * 2 + lineOffset, lineOffset, getWidth() - lineOffset, (int) radius * 2 - lineOffset);
                 cx = getWidth() - radius;
             } else {
-                mMagnifierDrawable.setBounds(lineOffset, lineOffset, (int)radius * 2 - lineOffset, (int)radius * 2 - lineOffset);
+                mMagnifierDrawable.setBounds(lineOffset, lineOffset, (int) radius * 2 - lineOffset, (int) radius * 2 - lineOffset);
             }
             canvas.drawCircle(cx, radius, radius, mMagnifierPaint);
             mMagnifierMatrix.setTranslate(radius - draggingX, radius - draggingY);
@@ -493,10 +511,10 @@ public class CropImageView extends ImageView {
             float radius = getWidth() / 8;
             float cx = radius;
             int lineOffset = (int) dp2px(MAGNIFIER_BORDER_WIDTH);
-            mMagnifierDrawable.setBounds(lineOffset, lineOffset, (int)radius * 2 - lineOffset, (int)radius * 2 - lineOffset);
+            mMagnifierDrawable.setBounds(lineOffset, lineOffset, (int) radius * 2 - lineOffset, (int) radius * 2 - lineOffset);
             double pointsDistance = CropUtils.getPointsDistance(draggingX, draggingY, 0, 0);
             if (pointsDistance < (radius * 2.5)) {
-                mMagnifierDrawable.setBounds(getWidth() - (int)radius * 2 + lineOffset, lineOffset, getWidth() - lineOffset, (int)radius * 2 - lineOffset);
+                mMagnifierDrawable.setBounds(getWidth() - (int) radius * 2 + lineOffset, lineOffset, getWidth() - lineOffset, (int) radius * 2 - lineOffset);
                 cx = getWidth() - radius;
             }
             canvas.drawCircle(cx, radius, radius, mMagnifierPaint);
@@ -547,10 +565,10 @@ public class CropImageView extends ImageView {
         Point rt = mCropPoints[1];
         Point rb = mCropPoints[2];
         Point lb = mCropPoints[3];
-        mPointLinePath.moveTo(getViewPointX(lt),getViewPointY(lt));
-        mPointLinePath.lineTo(getViewPointX(rt),getViewPointY(rt));
-        mPointLinePath.lineTo(getViewPointX(rb),getViewPointY(rb));
-        mPointLinePath.lineTo(getViewPointX(lb),getViewPointY(lb));
+        mPointLinePath.moveTo(getViewPointX(lt), getViewPointY(lt));
+        mPointLinePath.lineTo(getViewPointX(rt), getViewPointY(rt));
+        mPointLinePath.lineTo(getViewPointX(rb), getViewPointY(rb));
+        mPointLinePath.lineTo(getViewPointX(lb), getViewPointY(lb));
         mPointLinePath.close();
         return mPointLinePath;
     }
@@ -588,7 +606,7 @@ public class CropImageView extends ImageView {
         if (mShowEdgeMidPoint) {
             setEdgeMidPoints();
             //中间锚点
-            for (Point point : mEdgeMidPoints){
+            for (Point point : mEdgeMidPoints) {
                 canvas.drawCircle(getViewPointX(point), getViewPointY(point), dp2px(POINT_RADIUS), mPointFillPaint);
                 canvas.drawCircle(getViewPointX(point), getViewPointY(point), dp2px(POINT_RADIUS), mPointPaint);
             }
@@ -624,19 +642,19 @@ public class CropImageView extends ImageView {
             }
         }
         if (checkPoints(mEdgeMidPoints)) {
-            for (Point p : mEdgeMidPoints){
+            for (Point p : mEdgeMidPoints) {
                 if (isTouchPoint(p, event)) return p;
             }
         }
         return null;
     }
 
-    private boolean isTouchPoint(Point p, MotionEvent event){
+    private boolean isTouchPoint(Point p, MotionEvent event) {
         float x = event.getX();
         float y = event.getY();
         float px = getViewPointX(p);
         float py = getViewPointY(p);
-        double distance =  Math.sqrt(Math.pow(x - px, 2) + Math.pow(y - py, 2));
+        double distance = Math.sqrt(Math.pow(x - px, 2) + Math.pow(y - py, 2));
         if (distance < dp2px(TOUCH_POINT_CATCH_DISTANCE)) {
             return true;
         }
@@ -683,8 +701,8 @@ public class CropImageView extends ImageView {
                     break;
             }
         }
-       
-        if (DragPointType.isEdgePoint(pointType)){
+
+        if (DragPointType.isEdgePoint(pointType)) {
             int xoff = x - dragPoint.x;
             int yoff = y - dragPoint.y;
             moveEdge(pointType, xoff, yoff);
@@ -694,8 +712,8 @@ public class CropImageView extends ImageView {
         }
     }
 
-    private void moveEdge(DragPointType type, int xoff, int yoff){
-        switch (type){
+    private void moveEdge(DragPointType type, int xoff, int yoff) {
+        switch (type) {
             case TOP:
                 movePoint(mCropPoints[P_LT], 0, yoff);
                 movePoint(mCropPoints[P_RT], 0, yoff);
@@ -712,11 +730,12 @@ public class CropImageView extends ImageView {
                 movePoint(mCropPoints[P_LT], xoff, 0);
                 movePoint(mCropPoints[P_LB], xoff, 0);
                 break;
-                default: break;
+            default:
+                break;
         }
     }
-    
-    private void movePoint(Point point, int xoff, int yoff){
+
+    private void movePoint(Point point, int xoff, int yoff) {
         if (point == null) return;
         int x = point.x + xoff;
         int y = point.y + yoff;
@@ -726,7 +745,7 @@ public class CropImageView extends ImageView {
         point.y = y;
     }
 
-    private boolean canMoveLeftTop(int x, int y){
+    private boolean canMoveLeftTop(int x, int y) {
         if (pointSideLine(mCropPoints[P_RT], mCropPoints[P_LB], x, y)
                 * pointSideLine(mCropPoints[P_RT], mCropPoints[P_LB], mCropPoints[P_RB]) > 0) {
             return false;
@@ -742,7 +761,7 @@ public class CropImageView extends ImageView {
         return true;
     }
 
-    private boolean canMoveRightTop(int x, int y){
+    private boolean canMoveRightTop(int x, int y) {
         if (pointSideLine(mCropPoints[P_LT], mCropPoints[P_RB], x, y)
                 * pointSideLine(mCropPoints[P_LT], mCropPoints[P_RB], mCropPoints[P_LB]) > 0) {
             return false;
@@ -758,7 +777,7 @@ public class CropImageView extends ImageView {
         return true;
     }
 
-    private boolean canMoveRightBottom(int x, int y){
+    private boolean canMoveRightBottom(int x, int y) {
         if (pointSideLine(mCropPoints[P_RT], mCropPoints[P_LB], x, y)
                 * pointSideLine(mCropPoints[P_RT], mCropPoints[P_LB], mCropPoints[P_LT]) > 0) {
             return false;
@@ -774,7 +793,7 @@ public class CropImageView extends ImageView {
         return true;
     }
 
-    private boolean canMoveLeftBottom(int x, int y){
+    private boolean canMoveLeftBottom(int x, int y) {
         if (pointSideLine(mCropPoints[P_LT], mCropPoints[P_RB], x, y)
                 * pointSideLine(mCropPoints[P_LT], mCropPoints[P_RB], mCropPoints[P_RT]) > 0) {
             return false;
@@ -790,7 +809,7 @@ public class CropImageView extends ImageView {
         return true;
     }
 
-    private DragPointType getPointType(Point dragPoint){
+    private DragPointType getPointType(Point dragPoint) {
         if (dragPoint == null) return null;
 
         DragPointType type;
@@ -803,9 +822,9 @@ public class CropImageView extends ImageView {
             }
         }
         if (checkPoints(mEdgeMidPoints)) {
-            for (int i = 0; i < mEdgeMidPoints.length; i++){
-                if (dragPoint == mEdgeMidPoints[i]){
-                    type = DragPointType.values()[4+i];
+            for (int i = 0; i < mEdgeMidPoints.length; i++) {
+                if (dragPoint == mEdgeMidPoints[i]) {
+                    type = DragPointType.values()[4 + i];
                     return type;
                 }
             }
@@ -813,7 +832,7 @@ public class CropImageView extends ImageView {
         return null;
     }
 
-    private float getViewPointX(Point point){
+    private float getViewPointX(Point point) {
         return getViewPointX(point.x);
     }
 
@@ -821,7 +840,7 @@ public class CropImageView extends ImageView {
         return x * mScaleX + mActLeft;
     }
 
-    private float getViewPointY(Point point){
+    private float getViewPointY(Point point) {
         return getViewPointY(point.y);
     }
 
