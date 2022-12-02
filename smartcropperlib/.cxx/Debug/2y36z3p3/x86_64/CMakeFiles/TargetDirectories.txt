@@ -1,0 +1,3 @@
+/Users/macbook/Documents/Github/SmartCropper/smartcropperlib/.cxx/Debug/2y36z3p3/x86_64/CMakeFiles/rebuild_cache.dir
+/Users/macbook/Documents/Github/SmartCropper/smartcropperlib/.cxx/Debug/2y36z3p3/x86_64/CMakeFiles/edit_cache.dir
+/Users/macbook/Documents/Github/SmartCropper/smartcropperlib/.cxx/Debug/2y36z3p3/x86_64/CMakeFiles/smart_cropper.dir

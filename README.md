@@ -6,11 +6,12 @@
 
 简单易用的智能图片裁剪库，适用于身份证，名片，文档等照片的裁剪。 如果觉得还不错，欢迎 star，fork。
 
-你也可以关注我的另一个库 [SmartCamera](https://github.com/pqpo/SmartCamera)： SmartCamera 是一个 Android 相机拓展库，能够实时采集并且识别相机内物体边框是否吻合指定区域。
+你也可以关注我的另一个库 [SmartCamera](https://github.com/pqpo/SmartCamera)： SmartCamera 是一个 Android
+相机拓展库，能够实时采集并且识别相机内物体边框是否吻合指定区域。
 
 ## 支持特性
 
-- 使用智能算法(基于opencv)识别图片中的边框  
+- 使用智能算法(基于opencv)识别图片中的边框
 - 支持拖动锚点，手动调节选区，放大镜效果提升定位体验
 - 使用透视变换裁剪并矫正选区，还原正面图片
 - 支持丰富的UI设置，如辅助线，蒙版，锚点，放大镜等
@@ -32,17 +33,21 @@
 ![](art/smartcropper_album_1.gif)
 
 ## 优化智能选区算法(V2.1.1+)
+
 使用机器学习算法代理 Canny 算法，提高识别率(基于 TensorFlow 的 HED 网络).
 感谢：https://github.com/fengjian0106/hed-tutorial-for-document-scanning
 
 1. build.gradle 添加如下代码，不压缩模型：
+
 ```gradle
 aaptOptions {
     noCompress "tflite"
     noCompress "lite"
 }
 ```
+
 2. 在合适的地方初始化(比如在 Application.onCreate)：
+
 ```java
 SmartCropper.buildImageDetector(this);
 ```
@@ -50,6 +55,7 @@ SmartCropper.buildImageDetector(this);
 ## 接入
 
 1.根目录下的 build.gradle 添加：
+
 ```gradle
 allprojects {
 		repositories {
@@ -58,37 +64,41 @@ allprojects {
 		}
 }
 ```
+
 2.添加依赖
+
 ```gradle
 dependencies {
 	  compile 'com.github.pqpo:SmartCropper:v2.1.3'
 }
 ```
 
-注意：由于使用了 JNI， 请**不要混淆**  
+注意：由于使用了 JNI， 请**不要混淆**
 
 ```
 -keep class me.pqpo.smartcropperlib.**{*;}
 ```  
 
-## 使用  
+## 使用
 
-### 1. 裁剪布局：  
+### 1. 裁剪布局：
+
 ```xml
-<me.pqpo.smartcropperlib.view.CropImageView   
-        android:id="@+id/iv_crop"  
-        android:layout_width="match_parent" 
-        android:layout_height="match_parent" />  
+
+<me.pqpo.smartcropperlib.view.CropImageView android:id="@+id/iv_crop"
+    android:layout_width="match_parent" android:layout_height="match_parent" />  
 ```  
 
-注意： CropImageView 继承至 ImageView，但是 ScaleType 必须为居中类型，如果手动设置成 fit_end,fit_start,matrix 将会报错。  
+注意： CropImageView 继承至 ImageView，但是 ScaleType 必须为居中类型，如果手动设置成 fit_end,fit_start,matrix 将会报错。
 
-### 2. 设置待裁剪图片：    
+### 2. 设置待裁剪图片：
+
 ```java
 ivCrop.setImageToCrop(selectedBitmap); 
 ```
 
-该方法内部会使用 native 代码智能识别边框，并绘制图片与选区。在 native 层实现，大大的提高了运行效率，运行时间与图片大小成正比，在大图片的情况下，可以考虑在子线程执行，或者压缩传入的图片。
+该方法内部会使用 native 代码智能识别边框，并绘制图片与选区。在 native
+层实现，大大的提高了运行效率，运行时间与图片大小成正比，在大图片的情况下，可以考虑在子线程执行，或者压缩传入的图片。
 
 ### 3. 裁剪选区内的图片：
 
@@ -96,7 +106,7 @@ ivCrop.setImageToCrop(selectedBitmap);
 Bitmap crop = ivCrop.crop();  
 ```  
 
-根据选区裁剪出选区内的图片，并使用透视变换矫正成正面图片。  
+根据选区裁剪出选区内的图片，并使用透视变换矫正成正面图片。
 
 注意：改方法主要逻辑也是位于 native 层，运行时间与图片大小成正比，在大图片的情况下，可以考虑在子线程执行，或者压缩传入的图片。
 
@@ -127,11 +137,11 @@ Bitmap crop = ivCrop.crop();
 
 ## 关于我：
 
-- 邮箱：    pqponet@gmail.com
+- 邮箱： pqponet@gmail.com
 - GitHub：  [pqpo](https://github.com/pqpo)
 - 博客：    [pqpo's notes](https://pqpo.me)
 - Twitter: [Pqponet](https://twitter.com/Pqponet)
-- 微信公众号: pqpo_me(扫下方二维码) 
+- 微信公众号: pqpo_me(扫下方二维码)
 
 <img src="art/qrcode_for_gh.jpg" width="200">
 

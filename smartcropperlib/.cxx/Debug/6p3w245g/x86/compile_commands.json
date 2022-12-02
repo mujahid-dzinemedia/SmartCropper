@@ -1,0 +1,17 @@
+[
+{
+  "directory": "/Users/macbook/Documents/Github/SmartCropper/smartcropperlib/.cxx/Debug/6p3w245g/x86",
+  "command": "/Users/macbook/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android19 --gcc-toolchain=/Users/macbook/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/macbook/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dsmart_cropper_EXPORTS -I../../../../opencv/include -I../../../../src/main/cpp/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++11 -frtti -fexceptions -fno-limit-debug-info  -fPIC -o CMakeFiles/smart_cropper.dir/src/main/cpp/Scanner.cpp.o -c /Users/macbook/Documents/Github/SmartCropper/smartcropperlib/src/main/cpp/Scanner.cpp",
+  "file": "/Users/macbook/Documents/Github/SmartCropper/smartcropperlib/src/main/cpp/Scanner.cpp"
+},
+{
+  "directory": "/Users/macbook/Documents/Github/SmartCropper/smartcropperlib/.cxx/Debug/6p3w245g/x86",
+  "command": "/Users/macbook/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android19 --gcc-toolchain=/Users/macbook/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/macbook/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dsmart_cropper_EXPORTS -I../../../../opencv/include -I../../../../src/main/cpp/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++11 -frtti -fexceptions -fno-limit-debug-info  -fPIC -o CMakeFiles/smart_cropper.dir/src/main/cpp/android_utils.cpp.o -c /Users/macbook/Documents/Github/SmartCropper/smartcropperlib/src/main/cpp/android_utils.cpp",
+  "file": "/Users/macbook/Documents/Github/SmartCropper/smartcropperlib/src/main/cpp/android_utils.cpp"
+},
+{
+  "directory": "/Users/macbook/Documents/Github/SmartCropper/smartcropperlib/.cxx/Debug/6p3w245g/x86",
+  "command": "/Users/macbook/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=i686-none-linux-android19 --gcc-toolchain=/Users/macbook/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/macbook/Library/Android/sdk/ndk/23.1.7779620/toolchains/llvm/prebuilt/darwin-x86_64/sysroot -Dsmart_cropper_EXPORTS -I../../../../opencv/include -I../../../../src/main/cpp/include -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mstackrealign -D_FORTIFY_SOURCE=2 -Wformat -Werror=format-security  -std=c++11 -frtti -fexceptions -fno-limit-debug-info  -fPIC -o CMakeFiles/smart_cropper.dir/src/main/cpp/smart_cropper.cpp.o -c /Users/macbook/Documents/Github/SmartCropper/smartcropperlib/src/main/cpp/smart_cropper.cpp",
+  "file": "/Users/macbook/Documents/Github/SmartCropper/smartcropperlib/src/main/cpp/smart_cropper.cpp"
+}
+]
