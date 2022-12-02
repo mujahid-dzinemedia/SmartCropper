@@ -1,10 +1,10 @@
 apply plugin: 'com.android.library'
 //apply plugin: 'com.github.dcendents.android-maven'
-group='com.github.pqpo'
+group = 'com.github.pqpo'
 
 android {
     compileSdkVersion 33
-
+    ndkVersion "25.1.8937393"
     defaultConfig {
         minSdkVersion 21
         targetSdkVersion 33
@@ -38,5 +38,6 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api 'org.tensorflow:tensorflow-lite:1.13.1'
+    //api 'org.tensorflow:tensorflow-lite:1.13.1'
+    api 'org.tensorflow:tensorflow-lite:2.10.0'
 }

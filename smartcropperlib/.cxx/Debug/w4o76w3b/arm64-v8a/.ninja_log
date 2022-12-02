@@ -1,0 +1,5 @@
+# ninja log v5
+1	3746	1669980247	CMakeFiles/smart_cropper.dir/src/main/cpp/android_utils.cpp.o	10968635a659b566
+3	3867	1669980248	CMakeFiles/smart_cropper.dir/src/main/cpp/smart_cropper.cpp.o	376a0d26bbaa891e
+0	3951	1669980248	CMakeFiles/smart_cropper.dir/src/main/cpp/Scanner.cpp.o	f830a57d01395730
+3952	4248	1669980248	../../../../build/intermediates/cxx/Debug/w4o76w3b/obj/arm64-v8a/libsmart_cropper.so	142b1cd1ee9fad7
